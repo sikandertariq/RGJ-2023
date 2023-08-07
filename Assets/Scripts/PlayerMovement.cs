@@ -1,48 +1,27 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody), typeof(BoxCollider))]
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private CharacterController controller;
-    [SerializeField]
-    private Vector3 playerVelocity;
-    [SerializeField]
-    private bool groundedPlayer;
-   
-    [SerializeField] private float playerSpeed = 2.0f;
-    [SerializeField] private float jumpHeight = 1.0f;
-    [SerializeField] private float gravityValue = -9.81f;
+    [SerializeField] private Rigidbody _rigidbody;
+    [SerializeField] private FixedJoystick _joystick;
+    [SerializeField] private Animator _animator;
 
-    private void Start()
+    [SerializeField] private float _moveSpeed;
+
+    private void FixedUpdate()
     {
-        controller = gameObject.AddComponent<CharacterController>();
-    }
+        _rigidbody.velocity = new Vector3(_joystick.Horizontal * _moveSpeed, _rigidbody.velocity.y, _joystick.Vertical * _moveSpeed);
 
-    void Update()
-    {
-        groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerVelocity.y < 0)
+        if (_joystick.Horizontal != 0 || _joystick.Vertical != 0)
         {
-            playerVelocity.y = 0f;
+            transform.rotation = Quaternion.LookRotation(_rigidbody.velocity);
+            _animator.SetBool("isRunning", true);
         }
-
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        controller.Move(move * Time.deltaTime * playerSpeed);
-
-        if (move != Vector3.zero)
-        {
-            gameObject.transform.forward = move;
-        }
-
-        // Changes the height position of the player..
-        if (Input.GetButtonDown("Jump") && groundedPlayer)
-        {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        }
-
-        playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
+        else
+            _animator.SetBool("isRunning", false);
     }
 }
