@@ -20,8 +20,13 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(_rigidbody.velocity);
             _animator.SetBool("isRunning", true);
+            _animator.SetBool("isIdle", false);
+
         }
-        else
+        else if(_joystick.Horizontal == 0 || _joystick.Vertical == 0)
+        {
             _animator.SetBool("isRunning", false);
+            _animator.SetBool("isIdle", true);
+        }
     }
 }
