@@ -6,7 +6,7 @@ public class ZombieSpawnManager : MonoBehaviour
     public Transform target; // The capsule's Transform (player character).
 
     public float spawnRate = 3f; // Adjust this to control how often zombies spawn.
-    public int maxZombies = 10; // Adjust this to limit the maximum number of zombies in the scene.
+    public int maxZombies = 1; // Adjust this to limit the maximum number of zombies in the scene.
 
     private void Start()
     {
@@ -21,8 +21,8 @@ public class ZombieSpawnManager : MonoBehaviour
             return;
 
         // Generate a random position on the plane to spawn the zombie.
-        float offsetX = Random.Range(-10f, 10f); // Adjust the values based on the desired range.
-        float offsetZ = Random.Range(-10f, 10f);
+        float offsetX = Random.Range(-15f, 15f); // Adjust the values based on the desired range.
+        float offsetZ = Random.Range(-15f, 15f);
 
         Vector3 spawnPosition = target.position + new Vector3(offsetX, 0f, offsetZ);
 
