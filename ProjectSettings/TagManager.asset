@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Tiny
   - Tower
+  - Guard
   layers:
   - Default
   - TransparentFX

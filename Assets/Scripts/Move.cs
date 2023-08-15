@@ -67,6 +67,15 @@ public class Move : MonoBehaviour
         {
             Debug.Log("works");
             isAttacking = true;
+            animator.SetBool("isAttacking", true);
+        }
+
+        if(collision.gameObject.CompareTag("Guard"))
+        {
+            Debug.Log("guard");
+            Destroy(gameObject);
         }
     }
+
+    
 }
