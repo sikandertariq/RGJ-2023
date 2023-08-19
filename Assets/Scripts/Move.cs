@@ -8,11 +8,15 @@ public class Move : MonoBehaviour
     private bool isAttacking = false;
     public float attackRange = 1.5f; // Adjust this to set the range at which the zombie starts attacking.
     private Rigidbody zombieRigidbody;
+    public GameObject Blood;
+    public int attackDamage = 10; // Set the damage zombies deal to the tower.
 
+    //public AudioSource audioSource;
     private void Start()
     {
         zombieRigidbody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        //audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -61,6 +65,13 @@ public class Move : MonoBehaviour
         
     }
 
+    void Die()
+    {
+        Destroy(gameObject);
+        Instantiate(Blood, transform.position, Quaternion.identity);
+        AudioManager.instance.PlayDeathSound();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Tower"))
@@ -68,13 +79,23 @@ public class Move : MonoBehaviour
             Debug.Log("works");
             isAttacking = true;
             animator.SetBool("isAttacking", true);
+            AudioManager.instance.PlayAttackSound();
+            TowerHealth towerHealth = collision.gameObject.GetComponent<TowerHealth>();
+            if (towerHealth != null)
+            {
+                towerHealth.TakeDamage(attackDamage);
+            }
         }
 
         if(collision.gameObject.CompareTag("Guard"))
         {
-            Debug.Log("guard");
-            Destroy(gameObject);
+
+            Die();
+
+        
         }
+
+        
     }
 
     

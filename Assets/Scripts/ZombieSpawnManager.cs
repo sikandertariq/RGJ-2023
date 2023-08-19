@@ -6,7 +6,7 @@ public class ZombieSpawnManager : MonoBehaviour
     public Transform target; // The capsule's Transform (player character).
 
     public float spawnRate = 3f; // Adjust this to control how often zombies spawn.
-    public int maxZombies = 1; // Adjust this to limit the maximum number of zombies in the scene.
+    public int maxZombies = 5; // Adjust this to limit the maximum number of zombies in the scene.
 
     private void Start()
     {
