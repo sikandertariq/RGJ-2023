@@ -316,6 +316,7 @@
 "Assets/Scripts/BloodDestroyer.cs"
 "Assets/Scripts/CameraLook.cs"
 "Assets/Scripts/Cinetouch.cs"
+"Assets/Scripts/GameManager.cs"
 "Assets/Scripts/HealthBar.cs"
 "Assets/Scripts/Move.cs"
 "Assets/Scripts/PlayerMovement.cs"
