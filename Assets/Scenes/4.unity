@@ -2138,8 +2138,8 @@ MonoBehaviour:
   levelManager: {fileID: 1348271710}
   target: {fileID: 985963209}
   spawnRate: 3
-  maxZombies: 6
-  minSpawnDistance: 4
+  maxZombies: 5
+  minSpawnDistance: 5
 --- !u!4 &576640134
 Transform:
   m_ObjectHideFlags: 0
