@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.34153, g: 0.7093445, b: 0.9047532, a: 1}
+  m_IndirectSpecularColor: {r: 0.34132576, g: 0.7093253, b: 0.90499043, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2138,7 +2138,7 @@ MonoBehaviour:
   levelManager: {fileID: 1348271710}
   target: {fileID: 985963209}
   spawnRate: 3
-  maxZombies: 5
+  maxZombies: 6
   minSpawnDistance: 4
 --- !u!4 &576640134
 Transform:
@@ -4226,7 +4226,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1206687073}
-  m_LocalRotation: {x: 0.23891135, y: 0.00000001868023, z: -0.0000000045960133, w: 0.9710414}
+  m_LocalRotation: {x: 0.23891135, y: 0.000000018680234, z: -0.000000004596014, w: 0.9710414}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7309,7 +7309,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2116442043}
-  m_LocalRotation: {x: 0.36701816, y: -0.000000016005613, z: 0.0000000063150525, w: 0.9302138}
+  m_LocalRotation: {x: 0.36701816, y: 0.000000016005613, z: -0.0000000063150525, w: 0.9302138}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7429,7 +7429,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2131044684}
-  m_LocalRotation: {x: 0.2389113, y: 0.00000003736046, z: -0.000000009192026, w: 0.9710414}
+  m_LocalRotation: {x: 0.2389113, y: 0.000000037360465, z: -0.000000009192027, w: 0.9710414}
   m_LocalPosition: {x: 0.7, y: 11.71, z: -28.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
