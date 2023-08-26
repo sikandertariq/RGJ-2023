@@ -12,12 +12,6 @@ public class TouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [HideInInspector]
     public bool Pressed;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -46,11 +40,8 @@ public class TouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         PointerId = eventData.pointerId;
         PointerOld = eventData.position;
     }
-
-
     public void OnPointerUp(PointerEventData eventData)
     {
         Pressed = false;
     }
-
 }

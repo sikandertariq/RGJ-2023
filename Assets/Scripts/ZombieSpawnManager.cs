@@ -25,12 +25,14 @@ public class ZombieSpawnManager : MonoBehaviour
         if (totalZombiesSpawned >= 12 || GameObject.FindGameObjectsWithTag("Tiny").Length >= maxZombies)
             return;
         Vector3 spawnPosition = GenerateValidSpawnPosition();
+        if (spawnPosition != Vector3.zero)
+        {
+            // Instantiate the zombie prefab at the generated position.
+            GameObject newZombie = Instantiate(zombiePrefab, spawnPosition, Quaternion.identity);
+            newZombie.GetComponent<Move>().target = target; // Set the target for the zombie's movement script.
 
-        // Instantiate the zombie prefab at the generated position.
-        GameObject newZombie = Instantiate(zombiePrefab, spawnPosition, Quaternion.identity);
-        newZombie.GetComponent<Move>().target = target; // Set the target for the zombie's movement script.
-
-        totalZombiesSpawned++; // Increment the total zombies spawned count.
+            totalZombiesSpawned++; // Increment the total zombies spawned count.
+        }
     }
 
     private Vector3 GenerateValidSpawnPosition()
@@ -40,17 +42,22 @@ public class ZombieSpawnManager : MonoBehaviour
             0f,
             Random.Range(-15f, 15f)
         );
-        Vector3 spawnPosition = target.position + randomOffset;
-
-        // Calculate the distance between the spawn position and the tower.
-        float distanceToTower = Vector3.Distance(spawnPosition, transform.position);
-
-        // If the distance is less than the minimum spawn distance, adjust the spawn position.
-        if (distanceToTower < minSpawnDistance)
+        Vector3 spawnPosition;
+        if (target.position != null)
         {
-            Vector3 directionToTower = (spawnPosition - transform.position).normalized;
-            spawnPosition = transform.position + directionToTower * minSpawnDistance;
+            spawnPosition = target.position + randomOffset;
+
+            // Calculate the distance between the spawn position and the tower.
+            float distanceToTower = Vector3.Distance(spawnPosition, transform.position);
+
+            // If the distance is less than the minimum spawn distance, adjust the spawn position.
+            if (distanceToTower < minSpawnDistance)
+            {
+                Vector3 directionToTower = (spawnPosition - transform.position).normalized;
+                spawnPosition = transform.position + directionToTower * minSpawnDistance;
+            }
+            return spawnPosition;
         }
-        return spawnPosition;
+        return Vector3.zero;
     }
 }

@@ -1,14 +1,20 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    public static LevelManager Instance;
+
     [SerializeField] private GameObject[] tinies;
     [SerializeField] private GameObject pauseBtn;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject gameOverMenu;
 
+    private void Start()
+    {
+        Instance = this;
+    }
     void Update()
     {
         tinies = GameObject.FindGameObjectsWithTag("Tiny");
@@ -18,6 +24,14 @@ public class LevelManager : MonoBehaviour
             else
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    public IEnumerator GameOver()
+    {
+        Debug.Log("hahahahah");
+        yield return new WaitForSeconds(1.5f);
+        gameOverMenu.SetActive(true);
+    }
+
     public void OnClick_PauseBtn()
     {
         Time.timeScale = 0;
