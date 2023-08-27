@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private float playerSpeed = 2.0f;
     //[SerializeField]
     //private float jumpHeight = 1.0f;
-    [SerializeField] 
+    [SerializeField]
     private float gravityValue = -9.81f;
     [SerializeField]
     private Animator _animator;
@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        tut=new Tut();
-        controller=GetComponent<CharacterController>();
+        tut = new Tut();
+        controller = GetComponent<CharacterController>();
     }
 
     private void OnEnable()
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         tut.Disable();
     }
 
-    
+
 
     private void Start()
     {
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
             playerVelocity.y = 0f;
         }
         Vector2 movementInput = tut.Player.Move.ReadValue<Vector2>();
-        Vector3 move = (cameraMain.forward* movementInput.y+cameraMain.right*movementInput.x);
+        Vector3 move = (cameraMain.forward * movementInput.y + cameraMain.right * movementInput.x);
         move.y = 0;
         controller.Move(move * Time.deltaTime * playerSpeed);
 

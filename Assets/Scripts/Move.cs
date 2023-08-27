@@ -21,31 +21,21 @@ public class Move : MonoBehaviour
 
     private void Update()
     {
-
         //if (distanceToTarget <= attackRange)
         //{
         //    // Within attack range, stop moving and transition to attack animation.
         //    isAttacking = true;
         //    animator.SetBool("IsAttacking", true);
         //}
-        
-
-
         if (target != null)
         {
             if (!isAttacking)
             {
-
                 // Calculate the direction from the zombie to the target
                 Vector3 direction = (target.position - transform.position).normalized;
 
-
-                
                 Vector3 movementOffset = direction * speed * Time.deltaTime;
                 transform.position += movementOffset;
-
-
-
 
                 // Rotate the zombie to look at the target
                 Quaternion lookRotation = Quaternion.LookRotation(direction);
@@ -56,13 +46,8 @@ public class Move : MonoBehaviour
 
                 //Vector3 movement = direction * speed * Time.deltaTime;
                 //transform.Translate(movement);
-
-                
-
-                
             }
         }
-        
     }
 
     void Die()
@@ -87,16 +72,9 @@ public class Move : MonoBehaviour
             }
         }
 
-        if(collision.gameObject.CompareTag("Guard"))
+        if (collision.gameObject.CompareTag("Guard"))
         {
-
             Die();
-
-        
         }
-
-        
     }
-
-    
 }
