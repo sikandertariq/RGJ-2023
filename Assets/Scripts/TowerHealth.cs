@@ -16,7 +16,7 @@ public class TowerHealth : MonoBehaviour
         currentHealth -= damageAmount;
         if (currentHealth <= 0)
         {
-            StartCoroutine(LevelManager.Instance.GameOver());
+            //StartCoroutine(LevelManager.Instance.GameOver());
             gameObject.SetActive(false);
         }
     }
